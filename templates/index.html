@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>JPEG to Excel Converter</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <main class="container">
+        <section class="hero">
+            <h1>JPEG to Excel Converter</h1>
+            <p>
+                JPEG formatındaki tablo görsellerini saniyeler içinde Excel dosyasına dönüştürün.
+            </p>
+        </section>
+
+        <section class="upload-card">
+            <form method="post" enctype="multipart/form-data">
+                <label class="file-label">
+                    JPEG dosyalarınızı seçin
+                    <input type="file" name="files" accept=".jpg,.jpeg" multiple required>
+                </label>
+
+                <button type="submit">Excel'e Dönüştür</button>
+            </form>
+
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
+        </section>
+
+        <section class="info">
+            <h2>Nasıl çalışır?</h2>
+            <p>1. JPEG dosyanızı yükleyin.</p>
+            <p>2. Sistem görseldeki metni OCR ile okur.</p>
+            <p>3. Veriler Excel formatına dönüştürülür.</p>
+            <p>4. Hazır .xlsx dosyasını indirirsiniz.</p>
+        </section>
+    </main>
+
+</body>
+</html>
