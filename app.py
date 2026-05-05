@@ -15,7 +15,7 @@ if os.name == "nt":
 
 app = Flask(__name__)
 
-app.config["MAX_CONTENT_LENGTH"] = 5 * 1024 * 1024  # 5 MB
+app.config["MAX_CONTENT_LENGTH"] = 2 * 1024 * 1024
 ALLOWED_EXTENSIONS = {"jpg", "jpeg"}
 
 
