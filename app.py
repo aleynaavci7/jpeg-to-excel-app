@@ -95,7 +95,14 @@ def index():
 
         try:
             for file in files:
-                image = Image.open(file)
+                image = Image.open(file).convert
+
+                max_width = 1200
+
+                if image.width > max_width:
+                    ratio = max_width / image.width
+                    new_height = int(image.height * ratio)
+                    image = image.resize((max_width, new_height))
 
                 text = pytesseract.image_to_string(
                     image,
