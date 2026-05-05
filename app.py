@@ -95,7 +95,7 @@ def index():
 
         try:
             for file in files:
-                image = Image.open(file).convert
+                image = Image.open(file).convert("RGB")
 
                 max_width = 1200
 
