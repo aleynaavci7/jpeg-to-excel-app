@@ -60,7 +60,7 @@ def make_unique_headers(headers):
         header = header.strip()
 
         if not header:
-            header = "Bos_Kolon"
+            header = ""
 
         if header in used:
             used[header] += 1
@@ -107,7 +107,7 @@ def index():
                 text = pytesseract.image_to_string(
                     image,
                     lang="tur+eng",
-                    config="--psm 6"
+                    config="--psm 11"
                 )
 
                 for line in text.splitlines():
@@ -132,10 +132,16 @@ def index():
 
                     rows.append(row)
 
+            if not rows and headers:
+                rows.append({
+                    "dosya": files[0].filename,
+                    "okunan_metin": " ".join(headers)
+                })
+
             if not rows:
                 return render_template(
                     "index.html",
-                    error="Görselden okunabilir tablo/veri çıkarılamadı."
+                    error="Görselden metin okunamadı. Daha net bir JPEG deneyin."
                 )
 
             df = pd.DataFrame(rows)
